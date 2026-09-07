@@ -1,6 +1,20 @@
 # Shield-Browser
 # ONLY AVAILABLE ON ANDROID DEVICES 
 
+# 📸 Visual Feature Overview
+
+### 🕶️ Browser UI & Night Mode
+Dark mode layout featuring the main Omnibox address bar, privacy status indicators, and smooth canvas rendering.
+
+### 🔒 Integrated VPN Controls
+Quick access popover and configuration card allowing one-tap tunneling toggles and node selection.
+
+### 📥 Chrome/Brave-Style Downloads Hub
+Comprehensive download management displaying category filter chips (*All, Images, Videos, Docs*), file actions, and live transfer progress.
+
+### 📺 Dedicated Video Fullscreen Overlay
+Smooth HTML5 and YouTube video playback overlay, preventing page reloads and timecode resets when switching view modes.
+
 ![image_alt](https://github.com/ytcarphantom/Shield-Browser/blob/49917e069017c34d9d3dad305282da9f5f22551e/Screenshot_20260907_145531_Shield%20Browser.jpg)
 
 
