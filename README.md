@@ -1,26 +1,51 @@
 # Shield-Browser
 # ONLY AVAILABLE ON ANDROID DEVICES 
 
-# 📸 Visual Feature Overview
+## UPDATED FEATURES AND SETTINGS FIXED/IMPROVED 
 
-### 🕶️ Browser UI & Night Mode
-Dark mode layout featuring the main Omnibox address bar, privacy status indicators, and smooth canvas rendering.
+### 📥 Downloads Manager Overhaul
+* **Interface Cleanup:** Renamed "Offline Downloads" to **Downloads** across the application.
+* **Tabbed Downloads Browser:** Implemented structured tabs to easily filter between **All**, **Normal**, and **Offline** downloads.
+* **Direct URL Downloader:** Added a direct URL download input feature complete with auto-detected file metadata and real-time progress tracking.
 
-### 🔒 Integrated VPN Controls
-Quick access popover and configuration card allowing one-tap tunneling toggles and node selection.
+---
 
-### 📥 Chrome/Brave-Style Downloads Hub
-Comprehensive download management displaying category filter chips (*All, Images, Videos, Docs*), file actions, and live transfer progress.
+### 🛡️ Threat, Malware & Redirect Protection
+* **Malware Protection Engine:** Implemented real-time URL threat inspection in `MalwareProtection` covering homograph attacks, suspicious IP addresses, known malware domains, and phishing indicators.
+* **Warning Interstitials:** Integrated safety warnings into navigation flows, allowing users to return to safety or proceed at their own discretion.
+* **Rogue Redirect & Bounce Loop Prevention:** Blocks rapid background redirects and non-interactive scheme hijacking attempts, notifying users via a dismissible notification banner whenever an unwanted redirect is stopped.
 
-### 📺 Dedicated Video Fullscreen Overlay
-Smooth HTML5 and YouTube video playback overlay, preventing page reloads and timecode resets when switching view modes.
+---
+
+### 🔑 Chrome-Style Web Permissions & Native Uploads
+* **Permission Prompt Dialogs:** Integrated `onPermissionRequest` and `onGeolocationPermissionsShowPrompt` into `WebChromeClient` with native **Allow/Block** prompts for Camera, Microphone, and Location access.
+* **Native File Chooser:** Added full support for standard HTML file uploads (`<input type="file">`) via native Android file picker handling.
+
+---
+
+### 🔒 Zero-Log VPN & Anti-Tracking
+* **Shield VPN Service:** Built `ShieldVpnService` leveraging native `VpnService.prepare` system consent flows, live traffic metric tracking, and multi-region node selection.
+* **Advanced Scriptlet Injection:** Mitigates WebRTC local IP leaks, blocks Battery API fingerprinting, and automatically signals **Global Privacy Control (GPC)** preferences.
+
+---
+
+### 📺 Enhanced Fullscreen Video Overlays
+* **Immersive System Bars:** System bars automatically hide when entering fullscreen video playback.
+* **Custom Top Overlay:** Displays an overlay showing an **Exit Fullscreen** button, live system clock, and real-time battery level percentage.
+* **Clean Exit Handling:** Automatically restores top and bottom system bars upon exiting fullscreen mode.
+
+---
+
+### ⚡ Rendering & Battery Optimization
+* **Mesa Render Node Fix:** Eliminated emulator Mesa driver crashes (`LAYER_TYPE_NONE`) using safe software layer fallbacks.
+* **Efficiency Boosts:** Fine-tuned HTTP caching, enabled DOM storage, and restricted unprompted media autoplay to maximize device battery longevity and UI responsiveness.
 
 ![image_alt](https://github.com/ytcarphantom/Shield-Browser/blob/49917e069017c34d9d3dad305282da9f5f22551e/Screenshot_20260907_145531_Shield%20Browser.jpg)
 
 
 ![image alt](https://github.com/ytcarphantom/Shield-Browser/blob/760466d2a24ebe2d5dde3abd40ddd014eb543a92/Screenshot_20260907_145537_Shield%20Browser.jpg)
 
-![image alt](https://github.com/ytcarphantom/Shield-Browser/blob/71470f5f34e8ae5a78da78c7265b428b275f5295/AISelect_20260907_144850_Chrome.jpg)
+![image alt](https://github.com/ytcarphantom/Shield-Browser/blob/71470f5f34e8ae5a78da78c7265b428b275f5295/AISelect_2026q0907_144850_Chrome.jpg)
 
 
 # Release Notes & Changelog
