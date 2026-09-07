@@ -19,6 +19,10 @@ Smooth HTML5 and YouTube video playback overlay, preventing page reloads and tim
 
 
 
+![image alt](https://github.com/ytcarphantom/Shield-Browser/blob/760466d2a24ebe2d5dde3abd40ddd014eb543a92/Screenshot_20260907_145537_Shield%20Browser.jpg)
+
+
+
 
 # Release Notes & Changelog
 
