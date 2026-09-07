@@ -1,4 +1,5 @@
 # Shield-Browser
+# ONLY AVAILABLE ON ANDROID DEVICES 
 # Release Notes & Changelog
 
 ## 🚀 Key Improvements & Highlights
