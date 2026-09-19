@@ -3,6 +3,46 @@
 
 ## UPDATED FEATURES AND SETTINGS FIXED/IMPROVED 
 
+## 📁 Downloads Management & System Storage
+* **Public Storage Routing:** Updated `startDownload` in `BrowserViewModel` to route downloaded files (both direct streaming network downloads and data URIs) into the system downloads directory (`Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)`) with graceful fallbacks.
+* **System Downloads Folder Navigation:** Implemented `openDownloadsFolder(context)` in `BrowserViewModel` to open the system file manager directly to the Downloads folder via `FileProvider` and `DownloadManager.ACTION_VIEW_DOWNLOADS`.
+* **Enhanced Downloads UI:** 
+  * Added a dedicated **Open Downloads Folder** action in the `DownloadsDialog` header.
+  * Added a **Show in Folder** button on each download item card alongside Quick Open, Share, and Delete actions.
+
+---
+
+## ⚡ Performance & Responsiveness Enhancements
+* **Hardware Acceleration:** Enabled full GPU hardware acceleration across the Android Manifest and WebView container, eliminating software rasterization lag and ensuring smooth 60fps scrolling.
+* **Debounced Block Telemetry:** Shifted ad and tracker block counter disk persistence into debounced background coroutines, preventing UI thread stutter and frame drops during heavy page loading.
+* **Timer & Execution Continuity:** Removed global timer pausing during navigation transitions so background web workers and audio/video threads stay responsive.
+
+---
+
+## 🎬 YouTube & Media Playback Fixes
+* **Legitimate Redirect Filtering:** Fixed redirect protection logic to allow standard web redirects (such as `youtube.com` to `m.youtube.com` and authentication handoffs) while continuing to block malicious scheme hijacking and runaway redirect loops.
+* **Stream Delivery Optimization:** Whitelisted `googlevideo.com` media streaming endpoints from tracker filters while maintaining targeted blocking of in-stream ad segments (`&adformat=`, `&ad_type=`, `&oad=`).
+* **Media Playback Permissions:** Configured media playback settings to permit immediate HTML5 playback without requiring redundant manual tap gestures.
+* **Fullscreen View Stability:** Protected video fullscreen transitions by safely detaching views from their parent hierarchies prior to Compose overlay attachment.
+
+---
+
+## 🌐 Browser Compatibility & Standards
+* **Modern User Agent Sanitization:** Stripped webview tokens (`; wv`) from User-Agent headers, preventing desktop and mobile sites from serving degraded fallback layouts.
+* **Multi-Window & Popup Support:** Added an `onCreateWindow` handler to support OAuth authentication flows, dialog popups, and tabbed navigation.
+* **Cookie & Storage Parity:** Enabled necessary third-party cookie handling for normal browsing sessions and configured resilient SSL and resource error handling to prevent blank screens.
+
+---
+
+## 🛠️ Feature Updates & System Controls
+* **Real-Time Download Manager & Controls:** Real-time progress updates with full pause, resume, and cancel capabilities, floating progress notifications, dynamic controls, and support for direct URL/media capture.
+* **Async Clipboard Manager:** One-touch clipboard history manager with quick search, item categorization, and direct in-page text injection into active web forms and dynamic input fields.
+* **Password Vault & 1-Touch Auto-Login:** Fixed vault card signatures to display decrypted secrets with copy and visibility toggles, plus 1-touch auto-login supporting modern SPA frameworks and reactive input bindings.
+* **Distraction-Free Reader Mode:** Article extraction (headlines, bylines, body text) with customizable font scaling and theme options (Light, Sepia, Dark, and AMOLED).
+
+
+
+
 ### 📥 Downloads Manager Overhaul
 * **Interface Cleanup:** Renamed "Offline Downloads" to **Downloads** across the application.
 * **Tabbed Downloads Browser:** Implemented structured tabs to easily filter between **All**, **Normal**, and **Offline** downloads.
