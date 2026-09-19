@@ -12,6 +12,21 @@
 
 ---
 
+## 🐛 Bug Fixes & Rendering Pipeline Optimizations
+
+### 🖥️ Mesa DRM & Render Node Error Fixes (`Failed to open rendernode`)
+* **Eliminated Offscreen Pre-Rasterization:** Removed `setOffscreenPreRaster(...)` from `BrowserWebViewContainer` and `BrowserViewModel`. Disabling forced offscreen raster thread pools prevents Chromium from probing non-existent Linux Mesa DRI render nodes (`/dev/dri/renderD*`) in virtualized, headless, or cloud-streaming container environments.
+* **Layer Type Defaulting:** Removed explicit `setLayerType(View.LAYER_TYPE_HARDWARE, null)` calls and set the WebView layer type to default (`View.LAYER_TYPE_NONE`). This allows the Chromium compositor to manage its Skia/GPU pipeline natively through the system surface without forcing direct DRM node allocations.
+* **Deprecated API Cleanup:** Removed deprecated `setRenderPriority` invocations to adhere to modern Android WebView API standards.
+
+---
+
+### ⏱️ Chromium Page Load Metrics & Script Injection Fixes
+* **Resolved Metrics Synchronization Errors:** Fixed `E/chromium: Invalid first_paint (unset) for first_image_paint` warnings caused by executing DOM scripts during early, unpainted page lifecycle stages.
+* **Synchronized Scriptlet Execution:** Moved anti-tracking, viewport modification, and ad-defuser scriptlet injections out of `onPageStarted` and mid-parse `onProgressChanged` thresholds (20%/60%). Injections now occur strictly at `onPageCommitVisible` (when the initial paint commits) and `onPageFinished`.
+* **Isolated Progress Dispatcher:** Constrained `onProgressChanged` purely to user-facing UI progress bar updates, eliminating background thread stutter during DOM parsing.
+
+
 ## ⚡ Performance & Responsiveness Enhancements
 * **Hardware Acceleration:** Enabled full GPU hardware acceleration across the Android Manifest and WebView container, eliminating software rasterization lag and ensuring smooth 60fps scrolling.
 * **Debounced Block Telemetry:** Shifted ad and tracker block counter disk persistence into debounced background coroutines, preventing UI thread stutter and frame drops during heavy page loading.
