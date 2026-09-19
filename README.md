@@ -19,6 +19,18 @@
 
 ---
 
+## 🛡️ VPN Stability & Connection Management
+* **Seamless Server Switching:** Fixed VPN switching logic to cleanly release previous tunnel interfaces, preventing orphaned connections and ensuring smooth transitions across all zero-log locations.
+* **Service Lifecycle Reliability:** Fixed foreground service startup exceptions during active server switches to ensure stable background execution and prevent crash loops on newer Android versions.
+
+---
+
+## 🔋 Battery & Resource Optimization
+* **Reduced Wake-Ups:** Dramatically reduced background traffic polling intervals to keep the CPU in low-power states longer.
+* **WebView Render Optimization:** Streamlined compositing and offscreen rendering routines to decrease GPU/CPU usage during active browsing.
+* **Scriptlet Execution Efficiency:** Eliminated redundant scriptlet injections on page loads, lowering memory churn and speeding up document parse times.
+
+
 ## 🎬 YouTube & Media Playback Fixes
 * **Legitimate Redirect Filtering:** Fixed redirect protection logic to allow standard web redirects (such as `youtube.com` to `m.youtube.com` and authentication handoffs) while continuing to block malicious scheme hijacking and runaway redirect loops.
 * **Stream Delivery Optimization:** Whitelisted `googlevideo.com` media streaming endpoints from tracker filters while maintaining targeted blocking of in-stream ad segments (`&adformat=`, `&ad_type=`, `&oad=`).
