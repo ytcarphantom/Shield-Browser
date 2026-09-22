@@ -3,6 +3,8 @@
 # FIXING APP FEATURES AND PERFORMANCE AND IF IT WORKS GOOD SO NO RELEASE IS COMING OUT YET AND READ THIS TO SEE WHAT IS IMPLEMENTED INTO THIS BROWSER 
 ## UPDATED FEATURES AND SETTINGS FIXED/IMPROVED 
 
+## Availability Note: Exclusively optimized for Android devices. This release documentation highlights current architectural changes, system optimizations, and implemented security frameworks during the active stabilization phase.
+
 ## 📁 Downloads Management & System Storage
 * **Public Storage Routing:** Updated `startDownload` in `BrowserViewModel` to route downloaded files (both direct streaming network downloads and data URIs) into the system downloads directory (`Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)`) with graceful fallbacks.
 * **System Downloads Folder Navigation:** Implemented `openDownloadsFolder(context)` in `BrowserViewModel` to open the system file manager directly to the Downloads folder via `FileProvider` and `DownloadManager.ACTION_VIEW_DOWNLOADS`.
