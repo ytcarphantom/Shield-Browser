@@ -12,6 +12,10 @@
 
 ---
 
+## 🔒 Hardware Biometric App Lock
+
+A privacy-first security module that secures the browser workspace using native Android biometric authentication whenever the application returns from the background.
+
 
 
 
