@@ -12,6 +12,9 @@
 
 ---
 
+
+
+
 ## 🐛 Bug Fixes & Rendering Pipeline Optimizations
 
 ### 🖥️ Mesa DRM & Render Node Error Fixes (`Failed to open rendernode`)
@@ -23,9 +26,18 @@
 
 ### ⏱️ Chromium Page Load Metrics & Script Injection Fixes
 * **Resolved Metrics Synchronization Errors:** Fixed `E/chromium: Invalid first_paint (unset) for first_image_paint` warnings caused by executing DOM scripts during early, unpainted page lifecycle stages.
-* **Synchronized Scriptlet Execution:** Moved anti-tracking, viewport modification, and ad-defuser scriptlet injections out of `onPageStarted` and mid-parse `onProgressChanged` thresholds (20%/60%). Injections now occur strictly at `onPageCommitVisible` (when the initial paint commits) and `onPageFinished`.
+* **Synchronized Scriptlet Execution:** Moved anti-### Key Features & Security Architecture
+
+* **Hardware Biometric Lock on Resume:** Integrated `BiometricAuthManager` using Android's hardware `BiometricPrompt` and device credentials. When enabled, the app secures private tabs upon returning from the background and presents an authentication shield.
+* **Dynamic FLAG_SECURE Protection:** Implemented real-time synchronization between user preferences and the window flag in `MainActivity.kt` to prevent unauthorized screenshots and screen recorders, while blurring/masking the app preview in Android's recent tasks switcher.
+* **On-Device Machine Learning Tracker Blocking:** Connected `SmartTrackerClassifier` directly into `WebViewClient.shouldInterceptRequest` to inspect behavioral telemetry endpoints, fingerprinting queries, and session replay recorders on the fly.
+* **AI Phishing & Malicious URL Predictor:** Integrated real-time lexical, punycode homograph, entropy, and domain depth analysis in `BrowserWebViewContainer` before page navigation commits.
+* **Canvas & WebGL Fingerprint Spoofing:** Injected dynamic pixel and audio noise via `VpnTunnelManager.ANTI_TRACKING_JS` at the safe `onPageCommitVisible` lifecycle point, with preference toggles in Settings.
+* **Settings & Protection Controls:** Added dedicated toggles for Smart ML Tracker Blocking, AI Phishing Predictor, Biometric Lock, Screen Guard (`FLAG_SECURE`), and Stealth Icon Disguise in the Settings bottom sheet.
+tracking, viewport modification, and ad-defuser scriptlet injections out of `onPageStarted` and mid-parse `onProgressChanged` thresholds (20%/60%). Injections now occur strictly at `onPageCommitVisible` (when the initial paint commits) and `onPageFinished`.
 * **Isolated Progress Dispatcher:** Constrained `onProgressChanged` purely to user-facing UI progress bar updates, eliminating background thread stutter during DOM parsing.
 
+---
 
 ## ⚡ Performance & Responsiveness Enhancements
 * **Hardware Acceleration:** Enabled full GPU hardware acceleration across the Android Manifest and WebView container, eliminating software rasterization lag and ensuring smooth 60fps scrolling.
