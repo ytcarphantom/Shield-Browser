@@ -12,6 +12,14 @@
 
 ---
 
+* **Isolated Tab Execution & Composition:** Wrapped the active web container in `key(activeTab.id)`. Only the currently selected tab is rendered in memory and on screen. Background / inactive tabs are unmounted from the view hierarchy rather than running or rendering continuously in the background.
+* **On-Demand Reload When Revisited:** When switching back to an inactive tab, its dedicated WebView instance is cleanly instantiated and loaded on demand, ensuring zero CPU and memory drain from hidden tabs.
+* **Cookie & Storage Isolation:**
+  * Enforced third-party cookie blocking (`setAcceptThirdPartyCookies(..., false)`) to prevent cross-site tracker sharing and unlinked cookie leaks between different websites.
+  * Implemented session partition controls for private / incognito browsing with zero cookie retention and immediate `WebStorage.deleteAllData()` wipe.
+* **Lifecycle Resource Disposal:** Added `onRelease` and `onDispose` hooks to halt active network requests (`stopLoading()`), pause JavaScript timers (`onPause()`), and discard transient state when tabs are swapped.
+
+
 ## 🔒 Hardware Biometric App Lock
 
 A privacy-first security module that secures the browser workspace using native Android biometric authentication whenever the application returns from the background.
