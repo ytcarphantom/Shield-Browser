@@ -12,6 +12,45 @@
   * Added a dedicated **Open Downloads Folder** action in the `DownloadsDialog` header.
   * Added a **Show in Folder** button on each download item card alongside Quick Open, Share, and Delete actions.
 
+### CURRENTLY WORKING ON READ BELOW
+Fix sometimes random stuff on sites like images mainly will not show cause of a blur can you fix this and add more settings to increase battery life while on the browser and fix the safe software mode when this is enabled it gets very choppy and unable load anything and gets all glitchy and it would be a black screen and fix YT music it doesn't work fix all of it and reduce the heavy CPU load caused by running ads and tracking scripts. Limit tabs: Close unused tabs regularly, as keeping dozens of pages active forces the browser to consume continuous memory and processor power. Integrate a built-in content blocker: Heavy JavaScript ad networks, cryptocurrency miners, and tracking pixels consume massive amounts of CPU cycles. Implement a native ad-blocker or content-filtering API (like a declarative net request filter) to block these scripts before they execute. 
+Disable or sandbox auto-playing media: Automatically pausing or blocking <video> and <audio> tags from playing until the user taps them stops constant hardware video decoding, which spikes thermal output.
+2. Optimize JavaScript and Rendering Loop
+Throttle background tabs: When a tab is hidden or inactive, use the Page Visibility API to aggressively throttle JavaScript timers (setInterval / setTimeout), freeze requestAnimationFrame, and suspend heavy DOM manipulations.
+Limit concurrent workers and WebSockets: Restrict how many background Web Workers or persistent WebSocket connections a single site can spawn without user interaction.
+
+
+3. Disable Preloading and Speculative Fetching
+Turn off aggressive pre-rendering: Many browsers pre-load linked pages or DNS records in the background. Disable or limit speculative parsing, pre-fetching, and instant-page loading on mobile viewports unless explicitly requested.
+
+Reduce telemetry and usage reporting: Stop sending real-time crash logs, usage statistics, and behavioral data packets while the user is actively browsing.
+
+4. Memory and Cache Management
+Aggressive garbage collection: Mobile devices have tight RAM limits. If a browser lets old DOM elements and script closures pile up, the operating system triggers heavy garbage collection, causing CPU spikes and heat.
+Auto-discard inactive tabs: Automatically suspend or unload tabs that have been inactive in the background for more than a few minutes.
+
+Home Screen Shortcuts: You can tap your browser's menu (three dots) and select "Add to Home screen" to turn any frequently visited website into a quick-launch app icon.
+
+• Dynamic Network Request Throttling:
+•  Detect when the phone is under heavy CPU load or high thermal tracking, and automatically queue or delay non-essential background asset downloads (like extra images or scripts).Hardware-Accelerated WebGL Toggles: Add a dedicated "High-Performance / Low-Thermal Mode" toggle in your custom search bar UI. This allows users to completely disable heavy hardware-accelerated animations or WebGL canvases when they only need raw text or simple layouts, minimizing battery and heat.
+Picture-in-Picture (PiP) Video Controller:
+ Add a native video injection overlay hook that forces online video files into a floating system window when a user leaves the app, letting them watch tutorial videos seamlessly while running other tools.
+
+
+• Custom User-Agent Profile Switcher:
+•  Implement a seamless per-tab engine toggle that lets users spoof their exact user-agent string to mimic desktop layouts or older rendering environments, bypass aggressive web walls, or optimize mobile layout variations.
+
+
+
+The initial video stream requests and routes them through clean region proxies where Twitch ads aren't broadcasted.
+
+Android users primarily want a web browser that offers strong privacy, effective ad blocking, seamless cross-device synchronization, and desktop-grade flexibility.
+
+
+END OF WHATS BEING ADDED CURRENTLY WILL BE ADDED TOMORROW 
+
+
+
 
 ### 1. Video Sites Loading & Playback
 * **Preserved Real Video Streams:** Fine-tuned `googlevideo.com/videoplayback` filtering in `AdBlockEngine` to specifically target ad format flags (`adformat=`, `ad_type=`) while never intercepting or blocking clean video stream segments, completely resolving playback stalls and "An error occurred" warnings.
