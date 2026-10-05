@@ -12,6 +12,23 @@
   * Added a dedicated **Open Downloads Folder** action in the `DownloadsDialog` header.
   * Added a **Show in Folder** button on each download item card alongside Quick Open, Share, and Delete actions.
 
+
+### 1. Video Sites Loading & Playback
+* **Preserved Real Video Streams:** Fine-tuned `googlevideo.com/videoplayback` filtering in `AdBlockEngine` to specifically target ad format flags (`adformat=`, `ad_type=`) while never intercepting or blocking clean video stream segments, completely resolving playback stalls and "An error occurred" warnings.
+* **Hardware-Accelerated Video Pipeline:** Ensured that HTML5 video playback surfaces on video platforms (YouTube, Twitch, Vimeo, TikTok, Dailymotion) always run with hardware composition enabled (`LAYER_TYPE_NONE`), eliminating black video viewports and hardware decoder stalls.
+* **In-Browser Video Scheme Handling:** Intercepted and routed `intent:`, `vnd.youtube:`, `youtube:`, `vimeo:`, `twitch:`, `dailymotion:`, and `tiktok:` scheme requests directly into the `WebView` so selected videos play inside the browser with ad-blocking and background playback.
+* **Domain & TLD Resolution:** Updated the Omnibox and Home Search domain parser to recognize short URLs (e.g., `youtu.be`) and custom top-level domains as direct web addresses.
+* **Quick Links:** Fixed the Vimeo quick launch shortcut to load `https://vimeo.com` directly.
+
+### 2. Unique Settings & Enhanced Android Experience
+* **Native Web Dark Mode:** Enabled Android Q+ `forceDark` synchronized across Midnight Dark and AMOLED Pure Black themes to prevent blinding white backgrounds on external websites.
+* **Mixed Content Compatibility:** Configured `MIXED_CONTENT_COMPATIBILITY_MODE` to ensure external video CDNs and media manifests load seamlessly.
+* **DRM & Protected Media:** Refined `MediaKeySystem` access to preserve Widevine playback for supported media sites.
+* **Data Hygiene Feedback:** Added instant confirmation feedback upon clearing browsing data, history, and cookies.
+* **UI Touch Feedback:** Integrated native Material 3 ripples across quick link items and interactive components.
+
+### 3. Permissions & Hardware Access
+* **Media & Hardware Permissions:** Added audio recording and camera permissions to the browser to enable web-based video calls, voice input, and media 
 ---
 
 * **Isolated Tab Execution & Composition:** Wrapped the active web container in `key(activeTab.id)`. Only the currently selected tab is rendered in memory and on screen. Background / inactive tabs are unmounted from the view hierarchy rather than running or rendering continuously in the background.
