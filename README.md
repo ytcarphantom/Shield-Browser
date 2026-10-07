@@ -3,6 +3,13 @@
 # FIXED ALOT OF BUGS AND ERRORS IN THE BROWSER, FIXING APP FEATURES AND PERFORMANCE AND IF IT GOES GOOD I WILL RELEASE IT BUT NOT COMING OUT YET AND READ THIS TO SEE WHAT IS IMPLEMENTED INTO THIS BROWSER 
 ## UPDATED FEATURES AND SETTINGS FIXED/IMPROVED 
 
+
+<!-- Patreon Badge -->
+[![Patreon](https://img.shields.io/badge/Patreon-Support_EmuCoreV-FF424D?style=flat-square&logo=patreon&logoColor=white)](YOUR_PATREON_LINK)
+
+<!-- Discord Badge -->
+[!LINK](https://shield-browserapp--shieldbrowser.replit.app/#downloads)](YOUR_DISCORD_INVITE_LINK)
+
 ## Availability Note: Exclusively optimized for Android devices. This release documentation highlights current architectural changes, system optimizations, and implemented security frameworks during the active stabilization phase.
 
 ## 📁 Downloads Management & System Storage
