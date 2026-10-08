@@ -4,13 +4,37 @@
 ## UPDATED FEATURES AND SETTINGS FIXED/IMPROVED 
 
 
-<!-- Patreon Badge -->
-[![Patreon](https://img.shields.io/badge/Patreon-Support_EmuCoreV-FF424D?style=flat-square&logo=patreon&logoColor=white)](YOUR_PATREON_LINK)
+Offical site - https://shield-browserapp--shieldbrowser.replit.app/#downloads
 
-<!-- Discord Badge -->
-[!LINK](https://shield-browserapp--shieldbrowser.replit.app/#downloads)](YOUR_DISCORD_INVITE_LINK)
 
 ## Availability Note: Exclusively optimized for Android devices. This release documentation highlights current architectural changes, system optimizations, and implemented security frameworks during the active stabilization phase.
+
+
+## 🚀 Features & Bug Fixes
+
+### 🎵 YouTube Music 1-Second Ad Skip
+* **`ytInitialPlayerResponse` Defusing:** Implemented response sanitization on `music.youtube.com` to defuse ad placements and pre-roll blocks prior to player initialization.
+* **Instant Audio Muting:** Added immediate mitigation (`video.muted = true`, `video.volume = 0`) combined with ultra-fast forward seeking to prevent ad audio leakage.
+* **High-Frequency Listeners:** Connected `timeupdate`, `play`, and `playing` lifecycle events to eliminate mid-roll and pre-roll delays instantly.
+
+### 🎮 Twitch Ad Blocking
+* **Network-Level Interception:** Added known Twitch ad endpoints (`countess.twitch.tv`, `/api/ads`, `/v1/ads`, and stitched manifests) directly to the ad-blocking rule engine.
+* **SSAI Bypass Enhancement:** Intercepted both `fetch` and `XMLHttpRequest` routines to sanitize `M3U8` HLS playlists by stripping out `#EXT-X-DATERANGE:ID="stitched-ad..."` and discontinuity ad segments.
+* **UI Cleanup:** Suppressed native Twitch ad banners and overlay interruptions.
+
+### 🛠️ Stability & UI Freeze Fixes
+* **Non-Blocking JS Dialogs:** Implemented asynchronous handlers for JavaScript dialogs (`onJsAlert`, `onJsConfirm`, `onJsPrompt`, `onJsBeforeUnload`) within `WebChromeClient` to prevent malicious or heavy pages from freezing touch input or stalling the UI thread.
+
+### 🔒 VPN, IP Address & Location Masking
+* **WebRTC Leak Protection:** Secured `RTCPeerConnection`, `createOffer`, and `createAnswer` alongside active `icecandidate` event filtering to isolate local and public IP leaks.
+* **Geolocation Spoofing:** Overrode `navigator.geolocation` APIs (`getCurrentPosition`, `watchPosition`, `clearWatch`) to accurately mimic the selected VPN node's latitude, longitude, and accuracy variables while completely stripping mock/fake location flags.
+* **Seamless Permissions:** Auto-granted origin-level geolocation permissions when the VPN layout is active so web apps dynamically parse spoofed coordinates.
+
+### 🔋 Performance, Rendering & Battery Optimization
+* **MESA Render Fallbacks:** Preserved clean software rendering alternatives inside virtual/emulator sandboxes lacking hardware DRI nodes, successfully mitigating GPU-driven Mesa crashes.
+* **WebView Throttling:** Configured background WebView timers and media pipelines to throttle down predictably during tab switches and execution pauses to minimize battery drain.
+
+
 
 ## 📁 Downloads Management & System Storage
 * **Public Storage Routing:** Updated `startDownload` in `BrowserViewModel` to route downloaded files (both direct streaming network downloads and data URIs) into the system downloads directory (`Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)`) with graceful fallbacks.
