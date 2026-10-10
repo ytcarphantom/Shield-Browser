@@ -34,7 +34,7 @@ Offical site - https://shield-browserapp--shieldbrowser.replit.app/#downloads
 ### 4. Overhauled Settings & Overall App Experience
 * **Dedicated Video & Media Controls:** Integrated specific toggles in the main `SettingsDialog` for In-Video Sponsor Skipping, Instant Video Autoload, Zero-Second Ad Defusal, and Background Playback.
 * **VPN Quick Access & Configuration:** Embedded a direct sovereign VPN configuration hub inside the main Settings sheet.
-* 
+  
 ## 🚀 Features & Bug Fixes
 
 ### 🎵 YouTube Music 1-Second Ad Skip
