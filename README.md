@@ -9,7 +9,32 @@ Offical site - https://shield-browserapp--shieldbrowser.replit.app/#downloads
 
 ## Availability Note: Exclusively optimized for Android devices. This release documentation highlights current architectural changes, system optimizations, and implemented security frameworks during the active stabilization phase.
 
+## What's Changed
 
+### 1. Expanded Sovereign VPN Settings & Options
+* **12 Sovereign Zero-Log Global Locations:** Expanded the server list from 6 to 12 locations (Zurich 🇨🇭, Reykjavik 🇮🇸, Stockholm 🇸🇪, Amsterdam 🇳🇱, Frankfurt 🇩🇪, Tokyo 🇯🇵, New York 🇺🇸, Los Angeles 🇺🇸, Montreal 🇨🇦, Singapore 🇸🇬, London 🇬🇧, Sydney 🇦🇺).
+* **Multi-Protocol Selection:** Added encryption protocol choices directly in the UI (`WireGuard-X`, `Stealth Shadowsocks`, `IKEv2/IPSec`, and `DoH-Tunnel`).
+* **Comprehensive VPN Security Controls:**
+  * **DNS-over-HTTPS Leak Protection:** Encrypts queries via 1.1.1.1 to eliminate ISP tracking.
+  * **Emergency Kill-Switch:** Cuts traffic if connection integrity drops.
+  * **WebRTC IP & STUN Shield:** Neutralizes candidate leaks with virtual IP.
+  * **Stealth Obfuscation:** Camouflages VPN traffic to bypass DPI blockers.
+  * **Multi-Hop (Double VPN Cascade):** Chains sovereign nodes for multi-layer anonymization.
+  * **In-Page Geolocation Spoofing:** Continuously feeds coordinates matching the selected VPN server.
+  * **Split-Tunneling:** Permits local LAN and printer access while tunneling outside traffic.
+
+### 2. Sponsored Content In-Video Auto-Skip
+* **Automated Sponsor Skipping:** Created a SponsorBlock-style detection engine inside `AdBlockEngine.kt` that monitors player chapters, in-video promotional markers, and sponsor badges (`sponsor`, `promo`, `partnership`, `affiliate`).
+* **Seamless Fast-Forward:** Automatically skips directly to the end of sponsored segments when detected, allowing videos to continue playing smoothly without manual user intervention.
+
+### 3. Instant Video Autoload & Self-Healing
+* **No More Manual Page Refreshes:** Injected `VIDEO_AUTOLOAD_HEALER_JS` to resolve video playback stalls where videos previously required page refreshes.
+* **Proactive Recovery:** Automatically kickstarts media preloading on stalled `readyState 0` (`HAVE_NOTHING`) elements, clears deadlocks, and attaches self-healing error recovery listeners to resume playback seamlessly.
+
+### 4. Overhauled Settings & Overall App Experience
+* **Dedicated Video & Media Controls:** Integrated specific toggles in the main `SettingsDialog` for In-Video Sponsor Skipping, Instant Video Autoload, Zero-Second Ad Defusal, and Background Playback.
+* **VPN Quick Access & Configuration:** Embedded a direct sovereign VPN configuration hub inside the main Settings sheet.
+* 
 ## 🚀 Features & Bug Fixes
 
 ### 🎵 YouTube Music 1-Second Ad Skip
